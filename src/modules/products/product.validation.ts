@@ -8,8 +8,8 @@ const variationValidationSchema = z.object({
 
 // inventory validation schema with zod
 const inventoryValidationSchema = z.object({
-	quantity: z.string(),
-	inStock: z.string(),
+	quantity: z.number(),
+	inStock: z.boolean(),
 })
 
 // product validation schema with zod
@@ -19,7 +19,7 @@ const productValidationSchema = z.object({
 	price: z.number(),
 	category: z.string(),
 	tags: z.array(z.string()),
-	variants: variationValidationSchema,
+	variants: z.array(variationValidationSchema),
 	inventory: inventoryValidationSchema,
 })
 
