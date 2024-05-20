@@ -59,8 +59,48 @@ const getSingleProduct = async (req: Request, res: Response) => {
 	}
 }
 
+const updateProduct = async (req: Request, res: Response) => {
+	try {
+		const { productId } = req.params
+		const payload = req.body
+		const result = await ProductService.updateProduct(productId, payload)
+		res.json({
+			success: true,
+			message: "Product updated successfully!",
+			data: result,
+		})
+	} catch (error) {
+		res.json({
+			success: true,
+			message: "Something went wrong!",
+			data: error,
+		})
+	}
+}
+
+// product controller for delete a product form database
+const deleteProduct = async (req: Request, res: Response) => {
+	try {
+		const { productId } = req.params
+		const result = await ProductService.deleteProduct(productId)
+		res.json({
+			success: true,
+			message: "Product deleted successfully!",
+			data: null,
+		})
+	} catch (error) {
+		res.json({
+			success: true,
+			message: "Something went wrong!",
+			data: error,
+		})
+	}
+}
+
 export const ProductController = {
 	createProduct,
 	getAllProduct,
 	getSingleProduct,
+	updateProduct,
+	deleteProduct,
 }
