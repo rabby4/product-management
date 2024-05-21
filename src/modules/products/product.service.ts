@@ -8,9 +8,16 @@ const createProduct = async (payload: TProduct) => {
 }
 
 // product service for get all products
-const getAllProducts = async () => {
-	const result = await Products.find()
-	return result
+const getAllProducts = async (searchTerm: any) => {
+	if (!searchTerm) {
+		const result = await Products.find()
+		return result
+	} else {
+		const result = await Products.find({
+			name: { $regex: searchTerm, $options: "i" },
+		})
+		return result
+	}
 }
 
 const getSingleProduct = async (id: string) => {
