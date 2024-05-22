@@ -4,6 +4,7 @@ import orderValidationSchema from "./order.validation"
 import { Products } from "../products/product.model"
 import mongoose from "mongoose"
 
+// Order controller for create a order
 const createOrder = async (req: Request, res: Response) => {
 	try {
 		const orderData = req.body
@@ -13,13 +14,13 @@ const createOrder = async (req: Request, res: Response) => {
 		if (product) {
 			if (product.inventory.quantity >= orderData.quantity) {
 				const updateQuantity = product.inventory.quantity - orderData.quantity
-				const newQuantity = await Products.updateOne(
+				await Products.updateOne(
 					{ _id: product._id },
 					{ $set: { "inventory.quantity": updateQuantity } }
 				)
 
 				if (updateQuantity === 0) {
-					const updateInStock = await Products.updateOne(
+					await Products.updateOne(
 						{ _id: product._id },
 						{ $set: { "inventory.inStock": false } }
 					)
@@ -46,6 +47,8 @@ const createOrder = async (req: Request, res: Response) => {
 		})
 	}
 }
+
+// Order controller for get all Orders
 const getAllOrders = async (req: Request, res: Response) => {
 	try {
 		const email = req.query.email as string

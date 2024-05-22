@@ -20,11 +20,13 @@ const getAllProducts = async (searchTerm: any) => {
 	}
 }
 
+// Service for get single product
 const getSingleProduct = async (id: string) => {
 	const result = await Products.findById(id)
 	return result
 }
 
+// product service for update a product
 const updateProduct = async (id: string, payload: Partial<TProduct>) => {
 	const result = await Products.findByIdAndUpdate(id, payload, {
 		new: true,
@@ -33,6 +35,7 @@ const updateProduct = async (id: string, payload: Partial<TProduct>) => {
 	return result
 }
 
+// product service for delete a product from database
 const deleteProduct = async (id: string) => {
 	const result = await Products.findByIdAndDelete(id)
 	return result

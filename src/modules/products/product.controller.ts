@@ -69,6 +69,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
 	}
 }
 
+// Product controller for update a product
 const updateProduct = async (req: Request, res: Response) => {
 	try {
 		const { productId } = req.params
