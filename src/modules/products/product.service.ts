@@ -8,6 +8,7 @@ const createProduct = async (payload: TProduct) => {
 }
 
 // product service for get all products
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const getAllProducts = async (searchTerm: any) => {
 	if (!searchTerm) {
 		const result = await Products.find()

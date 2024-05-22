@@ -40,6 +40,7 @@ const createOrder = async (req: Request, res: Response) => {
 				})
 			}
 		}
+		/* eslint-disable @typescript-eslint/no-explicit-any */
 	} catch (error: any) {
 		res.json({
 			success: false,

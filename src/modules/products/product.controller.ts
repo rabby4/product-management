@@ -13,6 +13,7 @@ const createProduct = async (req: Request, res: Response) => {
 			message: "Product created successfully!",
 			data: result,
 		})
+		/* eslint-disable @typescript-eslint/no-explicit-any */
 	} catch (error: any) {
 		res.json({
 			success: false,
@@ -93,7 +94,7 @@ const updateProduct = async (req: Request, res: Response) => {
 const deleteProduct = async (req: Request, res: Response) => {
 	try {
 		const { productId } = req.params
-		const result = await ProductService.deleteProduct(productId)
+		await ProductService.deleteProduct(productId)
 		res.json({
 			success: true,
 			message: "Product deleted successfully!",
