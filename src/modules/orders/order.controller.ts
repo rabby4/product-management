@@ -40,10 +40,11 @@ const createOrder = async (req: Request, res: Response) => {
 				})
 			}
 		}
-	} catch (error) {
+	} catch (error: any) {
 		res.json({
 			success: false,
 			message: "Order not found",
+			error: error.issues[0].message,
 		})
 	}
 }
