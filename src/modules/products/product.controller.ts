@@ -17,7 +17,7 @@ const createProduct = async (req: Request, res: Response) => {
 		res.json({
 			success: false,
 			message: "Something went wrong!",
-			data: error.issues[0].message,
+			error: error.issues.map((item: { message: any }) => item.message),
 		})
 	}
 }

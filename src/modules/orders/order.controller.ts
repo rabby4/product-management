@@ -44,7 +44,7 @@ const createOrder = async (req: Request, res: Response) => {
 		res.json({
 			success: false,
 			message: "Order not found",
-			error: error.issues[0].message,
+			error: error.issues.map((item: { message: any }) => item.message),
 		})
 	}
 }
