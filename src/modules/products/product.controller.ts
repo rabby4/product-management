@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import productValidationSchema from "./product.validation"
 import { ProductService } from "./product.service"
+import { Products } from "./product.model"
 
 // product controller for create a product
 const createProduct = async (req: Request, res: Response) => {
@@ -75,11 +76,12 @@ const updateProduct = async (req: Request, res: Response) => {
 	try {
 		const { productId } = req.params
 		const payload = req.body
-		const result = await ProductService.updateProduct(productId, payload)
+		await ProductService.updateProduct(productId, payload)
+		const updatedData = await Products.findById(productId)
 		res.json({
 			success: true,
 			message: "Product updated successfully!",
-			data: result,
+			data: updatedData,
 		})
 	} catch (error) {
 		res.json({
