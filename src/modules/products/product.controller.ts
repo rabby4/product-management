@@ -44,7 +44,7 @@ const getAllProduct = async (req: Request, res: Response) => {
 	} catch (error) {
 		res.json({
 			success: true,
-			message: "Something went wrong!",
+			message: "Route not found",
 			data: error,
 		})
 	}
@@ -63,7 +63,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
 	} catch (error) {
 		res.json({
 			success: true,
-			message: "Something went wrong!",
+			message: "Route not found",
 			data: error,
 		})
 	}
@@ -83,7 +83,7 @@ const updateProduct = async (req: Request, res: Response) => {
 	} catch (error) {
 		res.json({
 			success: true,
-			message: "Something went wrong!",
+			message: "Route not found",
 			data: error,
 		})
 	}
@@ -102,7 +102,7 @@ const deleteProduct = async (req: Request, res: Response) => {
 	} catch (error) {
 		res.json({
 			success: true,
-			message: "Something went wrong!",
+			message: "Route not found",
 			data: error,
 		})
 	}
